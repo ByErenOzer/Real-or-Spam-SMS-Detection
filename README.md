@@ -1,85 +1,85 @@
 # Real-or-Spam SMS Detection 📱🛡️
 
-Türkçe SMS mesajları için geliştirilmiş yapay zeka tabanlı spam tespit sistemi. Bu proje, BERT tabanlı derin öğrenme modeli kullanarak SMS mesajlarını "ham" (normal) veya "spam" (istenmeyen) olarak sınıflandırır.
+An AI-powered spam detection system developed for Turkish SMS messages. This project uses a BERT-based deep learning model to classify SMS messages as "ham" (normal) or "spam" (unwanted).
 
-## 🎯 Proje Özeti
+## 🎯 Project Overview
 
-Bu proje, Türkçe SMS mesajlarını otomatik olarak sınıflandırmak için geliştirilmiş bir makine öğrenmesi uygulamasıdır. `dbmdz/bert-base-turkish-uncased` modeli kullanılarak fine-tuning yapılmış ve yüksek doğruluk oranları elde edilmiştir.
+This project is a machine learning application developed to automatically classify Turkish SMS messages. It has been fine-tuned using the `dbmdz/bert-base-turkish-uncased` model and achieved high accuracy rates.
 
-## 🚀 Özellikler
+## 🚀 Features
 
-- **Türkçe Dil Desteği**: Türkçe metinler için optimize edilmiş BERT modeli
-- **Yüksek Doğruluk**: %98+ doğruluk oranı
-- **Gerçek Zamanlı Tahmin**: Yeni mesajlar için anında sınıflandırma
-- **Görselleştirme**: Eğitim sürecinin detaylı analizi ve grafikleri
-- **Model Kaydetme**: En iyi performans gösteren modelin otomatik kaydedilmesi
+- **Turkish Language Support**: BERT model optimized for Turkish texts
+- **High Accuracy**: 98%+ accuracy rate
+- **Real-time Prediction**: Instant classification for new messages
+- **Visualization**: Detailed analysis and charts of the training process
+- **Model Saving**: Automatic saving of the best performing model
 
 ## 📊 Model Performansı
 
-### Test Sonuçları (En İyi Model - Epoch 1)
+### Test Results (Best Model - Epoch 1)
 
-| Metrik | Ham | Spam | Genel |
+| Metric | Ham | Spam | Overall |
 |--------|-----|------|-------|
 | **Precision** | 0.98 | 0.97 | 0.98 |
 | **Recall** | 0.97 | 0.98 | 0.98 |
 | **F1-Score** | 0.98 | 0.98 | 0.98 |
 | **Support** | 153 | 150 | 303 |
 
-### Validation Sonuçları
+### Validation Results
 
-| Metrik | Ham | Spam | Genel |
+| Metric | Ham | Spam | Overall |
 |--------|-----|------|-------|
 | **Precision** | 0.99 | 0.99 | 0.99 |
 | **Recall** | 0.99 | 0.99 | 0.99 |
 | **F1-Score** | 0.99 | 0.99 | 0.99 |
 | **Support** | 152 | 151 | 303 |
 
-## 📈 Eğitim Grafikleri
+## 📈 Training Charts
 
-### Eğitim ve Doğrulama Sonuçları
+### Training and Validation Results
 ![Training Results](https://raw.githubusercontent.com/ByErenOzer/Real-or-Spam-SMS-Detection/main/training_results.png)
 
-### Test Sınıflandırma Raporu
+### Test Classification Report
 ![Test Classification Report](https://raw.githubusercontent.com/ByErenOzer/Real-or-Spam-SMS-Detection/main/test_classification_report.png)
 
-### Validation Sınıflandırma Raporu
+### Validation Classification Report
 ![Validation Classification Report](https://raw.githubusercontent.com/ByErenOzer/Real-or-Spam-SMS-Detection/main/validation_classification_report.png)
 
-## 🛠️ Kurulum
+## 🛠️ Installation
 
-### Gereksinimler
+### Requirements
 
 ```bash
 pip install pandas numpy scikit-learn torch transformers tqdm seaborn matplotlib openpyxl
 ```
 
-### Gerekli Kütüphaneler
+### Required Libraries
 
-- **pandas**: Veri manipülasyonu
-- **numpy**: Sayısal hesaplamalar
-- **scikit-learn**: Makine öğrenmesi metrikleri
-- **torch**: PyTorch derin öğrenme framework'ü
-- **transformers**: Hugging Face transformers kütüphanesi
-- **tqdm**: İlerleme çubuğu
-- **seaborn & matplotlib**: Veri görselleştirme
-- **openpyxl**: Excel dosyası okuma
+- **pandas**: Data manipulation
+- **numpy**: Numerical computations
+- **scikit-learn**: Machine learning metrics
+- **torch**: PyTorch deep learning framework
+- **transformers**: Hugging Face transformers library
+- **tqdm**: Progress bar
+- **seaborn & matplotlib**: Data visualization
+- **openpyxl**: Excel file reading
 
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 Real-or-Spam-SMS-Detection/
-├── sms_spam_detection.py          # Ana eğitim scripti
-├── karistirilmis_sms_dataset.xlsx  # Eğitim veri seti
-├── sms_spam_detection/             # Model çıktıları
-│   ├── best_sms_model/            # En iyi model
+├── sms_spam_detection.py          # Main training script
+├── karistirilmis_sms_dataset.xlsx  # Training dataset
+├── sms_spam_detection/             # Model outputs
+│   ├── best_sms_model/            # Best model
 │   ├── best_sms_tokenizer/        # Tokenizer
-│   ├── training_history.json      # Eğitim geçmişi
-│   └── training_results.png       # Sonuç grafikleri
-└── README.md                      # Bu dosya
+│   ├── training_history.json      # Training history
+│   └── training_results.png       # Result charts
+└── README.md                      # This file
 
-## 🔧 Model Detayları
+## 🔧 Model Details
 
-### Kullanılan Model
+### Used Model
 - **Base Model**: `dbmdz/bert-base-turkish-uncased`
 - **Task**: Binary Classification (Ham vs Spam)
 - **Max Length**: 128 tokens
@@ -88,20 +88,20 @@ Real-or-Spam-SMS-Detection/
 - **Epochs**: 2
 - **Optimizer**: AdamW
 
-### Veri Ön İşleme
-- Küçük harfe çevirme
-- Fazla boşlukları temizleme
-- Boş mesajları filtreleme
+### Data Preprocessing
+- Converting to lowercase
+- Cleaning extra spaces
+- Filtering empty messages
 - Label encoding (ham: 0, spam: 1)
 
-### Veri Bölünmesi
-- **Eğitim**: %70
-- **Doğrulama**: %15
-- **Test**: %15
+### Data Split
+- **Training**: 70%
+- **Validation**: 15%
+- **Test**: 15%
 
-## 🎯 Sonuçlar
+## 🎯 Results
 
-- **Test Doğruluğu**: %98
+- **Test Accuracy**: 98%
 - **F1-Score**: 0.98
 - **Precision**: 0.98
 - **Recall**: 0.98
